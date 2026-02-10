@@ -1,0 +1,491 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #0f0f0f;
+    color: #e0e0e0;
+    line-height: 1.6;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+body.loaded { opacity: 1; }
+
+/* Navbar */
+.navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(8px);
+    padding: 15px 0;
+    z-index: 100;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 60px;
+    position: relative;
+}
+
+.nav-left, .nav-right {
+    display: flex;
+    list-style: none;
+    gap: 60px;
+}
+
+.nav-left a, .nav-right a {
+    color: #ddd;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 1.05rem;
+    letter-spacing: 1px;
+    transition: color 0.3s;
+}
+
+.nav-left a:hover, .nav-right a:hover { color: #d4af37; }
+
+/* Logo */
+.logo-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.logo-diamond {
+    font-size: 4.8rem;
+    color: #d4af37;
+    line-height: 0.6;
+    margin-bottom: -15px;
+}
+
+.logo-text-top {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: #d4af37;
+    letter-spacing: 8px;
+    margin-bottom: 8px;
+}
+
+.logo-text-main {
+    font-family: 'Playfair Display', serif;
+    font-size: 4.2rem;
+    font-weight: 700;
+    color: #d4af37;
+    letter-spacing: 12px;
+    line-height: 0.85;
+}
+
+/* Hero */
+.hero {
+    height: 100vh;
+    min-height: 700px;
+    background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('Imagenes/pareja.png') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero-overlay {
+    max-width: 900px;
+    padding: 20px;
+}
+
+.hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(4rem, 12vw, 7rem);
+    color: #d4af37;
+    margin-bottom: 20px;
+    letter-spacing: 5px;
+}
+
+.hero-subtitle {
+    font-size: clamp(1.8rem, 6vw, 3rem);
+    color: #fff;
+    margin-bottom: 50px;
+    font-weight: 300;
+}
+
+.shop-now-btn {
+    background: transparent;
+    border: 2px solid #d4af37;
+    color: #d4af37;
+    padding: 18px 60px;
+    font-size: 1.3rem;
+    text-decoration: none;
+    transition: all 0.4s;
+}
+
+.shop-now-btn:hover {
+    background: #d4af37;
+    color: #000;
+}
+
+/* Carrusel productos */
+.container { max-width: 1400px; margin: 0 auto; padding: 0 20px; }
+
+.section-title {
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    font-size: 3.5rem;
+    color: #d4af37;
+    margin: 100px 0 60px;
+}
+
+.carousel-wrapper {
+    overflow: hidden;
+    width: 100%;
+}
+
+.carousel-track {
+    display: flex;
+    animation: slideRightToLeft 40s linear infinite;
+    width: max-content;
+}
+
+@keyframes slideRightToLeft {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.carousel-wrapper:hover .carousel-track {
+    animation-play-state: paused;
+}
+
+.product {
+    flex: 0 0 auto;
+    width: 320px;
+    margin-right: 40px;
+    background: #1a1a1a;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    transition: transform 0.4s;
+}
+
+.product:hover { transform: scale(1.05); }
+
+.product img { width: 100%; height: auto; }
+
+.product-content { padding: 20px; text-align: center; }
+
+.product h3 { font-family: 'Playfair Display', serif; color: #fff; margin-bottom: 10px; }
+
+.product p { color: #bbb; margin-bottom: 15px; }
+
+.price { color: #d4af37; font-size: 1.5rem; font-weight: bold; margin-bottom: 20px; }
+
+.buy-btn {
+    background: #d4af37;
+    color: #000;
+    padding: 12px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.buy-btn:hover { background: #b8975e; }
+
+/* WhatsApp flotante */
+.whatsapp-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #25D366;
+    color: white;
+    padding: 15px 22px;
+    border-radius: 50px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    text-decoration: none;
+    font-weight: bold;
+    z-index: 1000;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.92);
+}
+
+.modal-content {
+    margin: 8% auto;
+    display: block;
+    max-width: 80%;
+    max-height: 80vh;
+    border-radius: 12px;
+}
+
+#caption { color: #ddd; text-align: center; padding: 15px; font-size: 1.2rem; }
+
+.close {
+    position: absolute;
+    top: 30px;
+    right: 45px;
+    color: white;
+    font-size: 60px;
+    cursor: pointer;
+}
+
+.close:hover { color: #d4af37; }
+
+/* Footer */
+footer {
+    background: #000;
+    text-align: center;
+    padding: 50px 20px;
+    color: #aaa;
+    margin-top: 80px;
+}
+
+.social-links a { color: #d4af37; margin: 0 20px; font-size: 1.4rem; text-decoration: none; }
+
+.social-links a:hover { color: #fff; }
+
+/* Responsivo */
+@media (max-width: 1100px) {
+    .nav-container { padding: 0 30px; }
+    .logo-text-main { font-size: 3.8rem; }
+}
+
+@media (max-width: 992px) {
+    .nav-container { flex-direction: column; padding: 20px; }
+    .logo-container { position: static; transform: none; margin: 20px 0; }
+    .nav-left, .nav-right { gap: 30px; justify-content: center; }
+    .carousel-track { animation-duration: 50s; } /* Más lento en móvil */
+}
+/* Grilla completa para la página de tienda (más productos visibles) */
+.product-grid-full {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    padding: 0 20px;
+}
+
+/* Asegura que el modal funcione en ambas páginas */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.92);
+}
+
+.modal-content {
+    margin: 8% auto;
+    display: block;
+    max-width: 80%;
+    max-height: 80vh;
+    border-radius: 12px;
+}
+
+/* Padding extra para que no se pegue al navbar en la página de tienda */
+.main-content {
+    padding-top: 140px; /* Espacio para el navbar fijo */
+}
+
+/* Página Nosotros */
+.nosotros-content {
+    padding: 140px 20px 80px;
+    min-height: 100vh;
+}
+
+.nosotros-title {
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    font-size: 4.5rem;
+    color: #d4af37;
+    margin-bottom: 60px;
+    letter-spacing: 3px;
+}
+
+.nosotros-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.nosotros-text h2 {
+    font-family: 'Playfair Display', serif;
+    color: #d4af37;
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+}
+
+.nosotros-text h3 {
+    color: #d4af37;
+    font-size: 1.8rem;
+    margin: 40px 0 15px;
+}
+
+.nosotros-text p {
+    font-size: 1.1rem;
+    color: #ddd;
+    margin-bottom: 20px;
+}
+
+.nosotros-text ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.nosotros-text ul li {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    position: relative;
+    padding-left: 25px;
+}
+
+.nosotros-text ul li::before {
+    content: "♦";
+    color: #d4af37;
+    position: absolute;
+    left: 0;
+    font-size: 1.2rem;
+}
+
+.nosotros-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+
+.nosotros-info-extra {
+    margin-top: 30px;
+    text-align: center;
+    color: #bbb;
+    font-size: 1.1rem;
+}
+
+.nosotros-info-extra p {
+    margin: 10px 0;
+}
+
+/* Responsivo para móvil */
+@media (max-width: 992px) {
+    .nosotros-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+    
+    .nosotros-title {
+        font-size: 3.5rem;
+    }
+}
+/* Página Contacto */
+.contact-content {
+    padding: 140px 20px 80px;
+    min-height: 100vh;
+}
+
+.contact-title {
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    font-size: 4.5rem;
+    color: #d4af37;
+    margin-bottom: 60px;
+    letter-spacing: 3px;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.contact-info h2 {
+    font-family: 'Playfair Display', serif;
+    color: #d4af37;
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+}
+
+.contact-info h3 {
+    color: #d4af37;
+    font-size: 1.8rem;
+    margin: 40px 0 15px;
+}
+
+.contact-info p {
+    font-size: 1.1rem;
+    color: #ddd;
+    margin-bottom: 20px;
+}
+
+.contact-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.contact-list li {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    color: #ccc;
+}
+
+.contact-list strong {
+    color: #fff;
+}
+
+.contact-cta-btn {
+    display: inline-block;
+    background: #25D366;
+    color: white;
+    padding: 15px 40px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 30px;
+    transition: background 0.3s;
+}
+
+.contact-cta-btn:hover {
+    background: #128C7E;
+}
+
+.contact-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+
+.contact-extra {
+    margin-top: 30px;
+    text-align: center;
+    color: #bbb;
+    font-size: 1.1rem;
+}
+
+/* Responsivo */
+@media (max-width: 992px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+    
+    .contact-title {
+        font-size: 3.5rem;
+    }
+}
